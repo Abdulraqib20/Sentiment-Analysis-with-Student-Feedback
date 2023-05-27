@@ -1,7 +1,7 @@
 # Sentiment Analysis on Student Feedback
 
 ## Description
-This project focuses on sentiment analysis of student feedback in engineering education. It aims to gain insights from feedback data, improve education quality, and enhance the student experience. The project employs natural language processing techniques, topic modeling, and machine learning algorithms to analyze sentiments expressed by students. It provides actionable recommendations based on sentiment analysis results.
+This project focuses on sentiment analysis of student feedback in engineering education. It is particularly directed at my engineering class in the university. It aims to gain insights from feedback data, improve education quality, and enhance the student experience. The project employs natural language processing techniques, topic modeling, and machine learning algorithms to analyze sentiments expressed by the students. It provides actionable recommendations based on sentiment analysis results.
 
 ## Key Features
 - Introduction: Overview of the project.
