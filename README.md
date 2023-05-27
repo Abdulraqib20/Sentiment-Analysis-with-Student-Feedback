@@ -5,7 +5,7 @@ This project focuses on sentiment analysis of student feedback in engineering ed
 
 ## Key Features
 - Introduction: Overview of the project.
-- Data Collection: Collect student feedback data using Google Forms.
+- Data Collection: Collect student feedback data using [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSeInhWFxECdegDDIYo7uY3-U-JHYyUDkTBQBw-KJxIvzYg_yA/viewform).
 - Data Cleaning: Clean and preprocess the collected data for analysis.
 - Data Preprocessing: Perform text preprocessing techniques such as tokenization, stop word removal, and stemming/lemmatization.
 - Aspect-Based Sentiment Analysis: Analyze the sentiment of specific aspects or keywords related to engineering education.
@@ -40,4 +40,4 @@ To address this limitation, future work could involve collecting a larger and mo
 Contributions are welcome! If you would like to contribute to the project, feel free to reach out to me. Together, we can enhance the analysis and make a positive impact on engineering education.
 
 ## Contact
-For any questions or inquiries, please contact [me](abdulraqibshakir03@gmail.com).
+For any questions or inquiries, please contact abdulraqibshakir03@gmail.com.
