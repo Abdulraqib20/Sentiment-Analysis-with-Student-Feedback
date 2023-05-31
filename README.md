@@ -25,7 +25,7 @@ This project focuses on sentiment analysis of student feedback in engineering ed
 4. Apply topic modeling to identify key themes and topics in the feedback.
 5. Detect and analyze emotions expressed in the feedback.
 6. Generate visualizations to understand sentiment distribution and feedback trends.
-7. Interact with the Power BI [Dashboard]([https://medium.com/r/?url=https%3A%2F%2Fapp.powerbi.com%2Flinks%2FAupqjRXtlh%3Fctid%3D66b3f0c2-8bc6-451e-9603-986f618ae682%26pbi_source%3DlinkShare%26bookmarkGuid%3D1adc0a91-ec20-476b-94ad-feef4f3f0ec1](https://app.powerbi.com/links/AupqjRXtlh?ctid=66b3f0c2-8bc6-451e-9603-986f618ae682&pbi_source=linkShare&bookmarkGuid=486f8ecd-e9fa-4f5e-9bfd-c684a5528ddb).
+7. Interact with the Power BI [Dashboard](https://app.powerbi.com/links/AupqjRXtlh?ctid=66b3f0c2-8bc6-451e-9603-986f618ae682&pbi_source=linkShare&bookmarkGuid=486f8ecd-e9fa-4f5e-9bfd-c684a5528ddb).
 8. Read the article I wrote on the project here.
 
 ## Results and Findings
