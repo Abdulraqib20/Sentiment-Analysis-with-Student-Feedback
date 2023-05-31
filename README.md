@@ -12,6 +12,7 @@ This project focuses on sentiment analysis of student feedback in engineering ed
 - Topic Modeling: Identify key themes and topics from the feedback data.
 - Emotion Detection: Detect and analyze emotions expressed in the feedback.
 - Visualizations: Generate visualizations to understand sentiment distribution and trends in the feedback.
+- Conclusions
 
 ## Installation
 1. Clone the repository: `git clone https://github.com/Abdulraqib20/Sentiment-Analysis-with-Student-Feedback.git`
@@ -24,12 +25,16 @@ This project focuses on sentiment analysis of student feedback in engineering ed
 4. Apply topic modeling to identify key themes and topics in the feedback.
 5. Detect and analyze emotions expressed in the feedback.
 6. Generate visualizations to understand sentiment distribution and feedback trends.
+7. Interact with the Power BI [Dashboard]([https://medium.com/r/?url=https%3A%2F%2Fapp.powerbi.com%2Flinks%2FAupqjRXtlh%3Fctid%3D66b3f0c2-8bc6-451e-9603-986f618ae682%26pbi_source%3DlinkShare%26bookmarkGuid%3D1adc0a91-ec20-476b-94ad-feef4f3f0ec1](https://app.powerbi.com/links/AupqjRXtlh?ctid=66b3f0c2-8bc6-451e-9603-986f618ae682&pbi_source=linkShare&bookmarkGuid=486f8ecd-e9fa-4f5e-9bfd-c684a5528ddb).
+8. Read the article I wrote on the project here.
 
 ## Results and Findings
-- The majority of feedback expressed negative sentiments, indicating areas for improvement
+- The majority of feedback is classified as `Neutral`, followed by `Positive` and `Negative` sentiments. This indicates a diverse range of sentiments expressed by students, with a notable presence of positive and neutral sentiments. The prevalence of `Neutral` sentiments in the student feedback sentiment analysis may suggest that students are expressing a balanced perspective or a lack of strong sentiment towards their educational experience. It might also indicate that students are providing objective observations or factual statements without expressing a clear positive or negative sentiment.
+- Majority of students had no previous experience, adding to the context of the analysis.
 - Specific courses showed varying sentiment levels, suggesting strengths and areas for enhancement
 - Key themes and topics were identified through topic modeling, providing additional context
 - Emotion detection revealed the emotions expressed by students in their feedback
+- Correlations reveal the alignment of sentiment score with overall satisfaction and perfect correlation with emotion polarity. Study hours positively influence overall satisfaction.
 
 ## Limitations and Future Work
 One of the limitations of this project is the relatively small size of the dataset. The data collected for sentiment analysis on student feedback in engineering education may not represent the entire student population or provide a comprehensive view of sentiments. This limitation could affect the generalizability of the findings and the accuracy of the sentiment analysis results.
