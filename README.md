@@ -26,7 +26,7 @@ This project focuses on sentiment analysis of student feedback in engineering ed
 5. Detect and analyze emotions expressed in the feedback.
 6. Generate visualizations to understand sentiment distribution and feedback trends.
 7. Interact with the Power BI [Dashboard](https://app.powerbi.com/links/AupqjRXtlh?ctid=66b3f0c2-8bc6-451e-9603-986f618ae682&pbi_source=linkShare&bookmarkGuid=486f8ecd-e9fa-4f5e-9bfd-c684a5528ddb).
-8. Read the article I wrote on the project here.
+8. Read the article I wrote on the project [here](https://medium.com/@abdulraqibshakir03/sentiment-analysis-on-student-feedback-in-engineering-education-55a913dd7967?source=user_profile---------2----------------------------).
 
 ## Results and Findings
 - The majority of feedback is classified as `Neutral`, followed by `Positive` and `Negative` sentiments. This indicates a diverse range of sentiments expressed by students, with a notable presence of positive and neutral sentiments. The prevalence of `Neutral` sentiments in the student feedback sentiment analysis may suggest that students are expressing a balanced perspective or a lack of strong sentiment towards their educational experience. It might also indicate that students are providing objective observations or factual statements without expressing a clear positive or negative sentiment.
