@@ -1,0 +1,104 @@
+Course Code,Feedback,Previous Experience,Gender,Attendance,Course Difficulty,Study Hours (per week),Overall Satisfaction,Department,Date,Time,Hour,Processed_Feedback,Char_Count,Word_Count,Sentiment_Scores,Sentiments
+CPE 321,"The man is too fast in his teaching,he clearly doesn't know how to teach students very well.",No,Male,Regular,Challenging,21,5,Yes,2023-05-21,03:29:49,3,man fast teachinghe clearly doesnt know teach student well,58,9,0.15000000000000002,positive
+CPE 331,The class is dry but he really puts in efforts,Yes,Male,Regular,Moderate,7,8,Yes,2023-05-21,03:39:59,3,class dry really put effort,27,5,0.06666666666666668,positive
+CPE 321,"The course is shit and it's a threat to my brain,the teaching mode is so poor ",No,Male,Regular,Challenging,7,4,Yes,2023-05-21,03:57:54,3,course shit threat brainthe teaching mode poor,46,7,-0.30000000000000004,negative
+CPE 321,"He no try at all, didn’t teach well.",No,Male,Regular,Challenging,12,1,Yes,2023-05-21,04:52:08,4,try didnt teach well,20,4,0.0,negative
+CPE 321,Ogbeni you sef know as e dae go ,Yes,Male,Occasional,Difficult,0,0,Yes,2023-05-21,05:24:33,5,ogbeni sef know e dae go,24,6,0.0,negative
+CPE 321,"Omo, God will judge AK sha.
+You don’t take a class like that and expect the students to understand what you are doing, that’s him and God ahead.
+Make I sha no fail",No,Male,Regular,Difficult,9,1,Yes,2023-05-21,05:31:57,5,omo god judge ak sha dont take class like expect student understand thats god ahead make sha fail,97,18,-0.5,negative
+CPE 321,That man no good at all,No,Male,Regular,Difficult,3,1,No,2023-05-21,06:11:02,6,man good,8,2,0.7,positive
+CPE 321,E choke,No,Male,Regular,Challenging,0,3,Yes,2023-05-21,07:19:29,7,e choke,7,2,0.0,negative
+MEE 361,The teaching mode is okay as the lecturer do revision of what's being taught from time to time.,No,Male,Regular,Moderate,4,8,Yes,2023-05-21,08:48:19,8,teaching mode okay lecturer revision whats taught time time,59,9,0.5,positive
+CPE 321,"Basically from my own experience, CPE 321 isn’t hard but the method employed by the lecturer in teaching the course leaves much to be desired. I would have loved if the lecturer took his time and explained the course very well. ",No,Male,Regular,Challenging,5,3,Yes,2023-05-21,09:44:44,9,basically experience cpe isnt hard method employed lecturer teaching course leaf much desired would loved lecturer took time explained course well,146,21,0.20277777777777775,positive
+CPE 321,On God No cap,No,Male,Regular,Challenging,3,1,Yes,2023-05-21,18:01:23,18,god cap,7,2,0.0,negative
+CPE 321,"The course is very very difficult and the lecturer no dey even make am easy.
+He actually taught and explained 27 pages of the material within 3 hours.",No,Male,Regular,Difficult,6,0,Yes,2023-05-21,18:57:34,18,course difficult lecturer dey even make easy actually taught explained page material within hour,96,14,-0.022222222222222216,negative
+CPE 321,Need more explanation and practical application from the lecturer when teaching this course,No,Male,Regular,Moderate,0,3,Yes,2023-05-21,19:08:33,19,need explanation practical application lecturer teaching course,63,7,0.0,negative
+CPE 321,The course isn’t supposed to be this difficult if the lecturer had taken his time to explain it and made the class an interactive one. ,Yes,Male,Regular,Challenging,0,2,Yes,2023-05-22,02:42:44,2,course isnt supposed difficult lecturer taken time explain made class interactive one,85,12,-0.5,negative
+CPE 321,Omooooo is all I can say😭,No,Male,Regular,Difficult,2,4,Yes,2023-05-24,04:51:46,4,omooooo say,11,2,0.0,negative
+CPE 311,The lecturer is cool and calm. Her teaching method makes it easier to understand her courses.,Yes,Male,Regular,Easy,9,9,Yes,2023-05-24,09:26:26,9,lecturer cool calm teaching method make easier understand course,64,9,0.325,positive
+CPE 321,The lecturer is fucking terrible. With his I-dont-care attitude towards students. The worst lecturer so far.,No,Male,Regular,Difficult,7,0,Yes,2023-05-24,09:27:51,9,lecturer fucking terrible idontcare attitude towards student worst lecturer far,79,10,-0.6333333333333333,negative
+CPE 331,The course is actually well detailed in the material the lecturer uses. The lecturer is also cool-headed and makes the class interactive albeit boring at times.,No,Male,Regular,Easy,10,7,Yes,2023-05-24,09:29:41,9,course actually well detailed material lecturer us lecturer also coolheaded make class interactive albeit boring time,117,16,-0.19999999999999998,negative
+CPE 341,"The course is not well taught. Worst still, we are writing codes on paper for exams.",Yes,Male,Regular,Moderate,10,6,Yes,2023-05-24,09:31:08,9,course well taught worst still writing code paper exam,54,9,-1.0,negative
+CPE 381,I dont like my group period.,No,Male,Regular,Moderate,1,2,Yes,2023-05-24,09:33:37,9,dont like group period,22,4,0.0,negative
+MEE 361,"This lecturer really tried for us to be honest but with the teaching of hundreds of students at a time, the class is very rowdy and students are mostly left to study on their own.",Yes,Male,Regular,Moderate,12,7,Yes,2023-05-24,09:35:13,9,lecturer really tried u honest teaching hundred student time class rowdy student mostly left study,98,15,0.26666666666666666,positive
+GSE 301,One of my best courses so far. No stress at all and we finished up really early.,Yes,Male,Regular,Easy,0,10,Yes,2023-05-24,09:36:04,9,one best course far stress finished really early,48,8,0.4000000000000001,positive
+CPE 321,Such a terrible teaching method from the lecturer.,No,Male,Regular,Difficult,10,0,Yes,2023-05-24,09:40:17,9,terrible teaching method lecturer,33,4,-1.0,negative
+CPE 321,Awful ,No,Male,Regular,Difficult,4,2,Yes,2023-05-24,09:48:15,9,awful,5,1,-1.0,negative
+CPE 321,I felt the course was a bit rushed in terms of teaching the course and also the materials were a bit complex to read and understand ,No,Male,Regular,Challenging,4,1,Yes,2023-05-24,16:39:40,16,felt course bit rushed term teaching course also material bit complex read understand,85,13,-0.3,negative
+CPE 341,Little time to learn so much ,No,Female,Regular,Challenging,3,4,Yes,2023-05-26,14:41:24,14,little time learn much,22,4,0.0062500000000000056,negative
+CPE 381,"The lecturer is good, I like him.",No,Female,Regular,Moderate,2,8,Yes,2023-05-26,14:43:35,14,lecturer good like,18,3,0.7,positive
+CPE 321,We are basically left to go study that course on our own. ,No,Female,Regular,Difficult,8,2,Yes,2023-05-26,14:45:34,14,basically left go study course,30,5,0.0,negative
+CPE 311,Course is well thought,Yes,Female,Regular,Easy,10,10,Yes,2023-05-29,15:13:03,15,course well thought,19,3,0.0,negative
+CPE 321,this course is hard,No,Female,Irregular,Difficult,3,0,Yes,2023-05-29,15:13:52,15,course hard,11,2,-0.2916666666666667,negative
+CPE 331,The lecturer is good and his course is also good,No,Female,Regular,Moderate,12,8,Yes,2023-05-29,15:14:54,15,lecturer good course also good,30,5,0.7,positive
+CPE 341,the way the course is taught is not up to 21st century standard,No,Female,Regular,Challenging,8,4,Yes,2023-05-29,15:16:16,15,way course taught 21st century standard,39,6,0.0,negative
+CPE 381,1 unit course wey dey disturb person. nonsense.,No,Female,Regular,Challenging,0,1,Yes,2023-05-29,15:17:26,15,unit course wey dey disturb person nonsense,43,7,0.0,negative
+MEE 361,class is always rowdy when taking this course,No,Female,Irregular,Moderate,11,6,Yes,2023-05-29,15:18:28,15,class always rowdy taking course,32,5,0.0,negative
+GSE 301,no stress in this course,No,Female,Occasional,Easy,5,10,Yes,2023-05-29,15:22:05,15,stress course,13,2,0.0,negative
+CPE 311,good,Yes,Female,Regular,Easy,12,9,Yes,2023-05-29,15:22:59,15,good,4,1,0.7,positive
+CPE 321,stupid ,No,Female,Irregular,Difficult,4,0,Yes,2023-05-29,15:23:37,15,stupid,6,1,-0.7999999999999999,negative
+CPE 331,nice course ,No,Female,Irregular,Moderate,8,7,Yes,2023-05-29,15:34:07,15,nice course,11,2,0.6,positive
+CPE 341,hard and lecturer is fast when teaching,No,Female,Irregular,Difficult,10,3,Yes,2023-05-29,15:35:14,15,hard lecturer fast teaching,27,4,-0.04583333333333334,negative
+CPE 381,why is a 1 unit course stressing our lives?,No,Female,Irregular,Challenging,1,1,Yes,2023-05-29,15:36:57,15,unit course stressing life,26,4,0.0,negative
+MEE 361,relatively easy,No,Female,Regular,Moderate,15,6,Yes,2023-05-29,15:37:41,15,relatively easy,15,2,0.43333333333333335,positive
+GSE 301,stress no dey the course,No,Female,Regular,Easy,0,9,Yes,2023-05-29,15:41:13,15,stress dey course,17,3,0.0,negative
+CPE 321,very awful course,No,Male,Irregular,Difficult,7,1,Yes,2023-05-29,15:43:46,15,awful course,12,2,-1.0,negative
+CPE 341,"The teaching mode and environment is top tier but the course itself requires deep thinking and reasoning especially questions seen in exam so the little learned during classes is certainly not enough to solve the problems, especially if you don’t have prior experience with programming.",No,Male,Regular,Challenging,6,5,Yes,2023-05-29,15:44:32,15,teaching mode environment top tier course requires deep thinking reasoning especially question seen exam little learned class certainly enough solve problem especially dont prior experience programming,201,26,0.044642857142857144,negative
+CPE 311,nice teaching method from the lecturer,Yes,Male,Regular,Easy,11,9,Yes,2023-05-29,15:45:08,15,nice teaching method lecturer,29,4,0.6,positive
+CPE 321,the teaching method is so terrible ,No,Male,Irregular,Difficult,2,0,Yes,2023-05-29,15:48:28,15,teaching method terrible,24,3,-1.0,negative
+CPE 311,Easy course,No,Female,Irregular,Easy,8,9,Yes,2023-05-30,13:47:48,13,easy course,11,2,0.43333333333333335,positive
+CPE 321,The outline of the course is difficult and lecturer is bad,No,Female,Regular,Difficult,6,1,Yes,2023-05-30,13:50:08,13,outline course difficult lecturer bad,37,5,-0.5999999999999999,negative
+CPE 331,Lecturer is good but the class is dry and equations are much,No,Female,Irregular,Moderate,14,6,Yes,2023-05-30,13:51:12,13,lecturer good class dry equation much,37,6,0.27777777777777773,positive
+CPE 341,I hate coding,No,Female,Regular,Challenging,6,5,Yes,2023-05-30,13:52:00,13,hate coding,11,2,-0.8,negative
+CPE 381,This one-unit course has got a hell of wahala,No,Female,Regular,Challenging,1,1,Yes,2023-05-30,13:53:12,13,oneunit course got hell wahala,30,5,0.0,negative
+MEE 361,Teaching mode is bad but course is sometimes easy to understand,No,Female,Regular,Moderate,14,7,Yes,2023-05-30,13:55:57,13,teaching mode bad course sometimes easy understand,50,7,-0.13333333333333325,negative
+GSE 301,No stress in the course,No,Female,Regular,Easy,2,10,Yes,2023-05-30,13:57:08,13,stress course,13,2,0.0,negative
+CPE 311,I won't lie. The course is sometimes hard.,Yes,Male,Occasional,Difficult,5,4,Yes,2023-05-30,13:59:12,13,wont lie course sometimes hard,30,5,-0.2916666666666667,negative
+CPE 311,The course is cool,Yes,Male,Regular,Easy,18,10,Yes,2023-05-30,14:02:43,14,course cool,11,2,0.35,positive
+CPE 321,Ah akanni. God will judge you.,No,Male,Irregular,Difficult,8,0,Yes,2023-05-30,14:03:32,14,ah akanni god judge,19,4,0.0,negative
+CPE 331,Na me dey make the class funny pass even though the man go do him best make am dry.,No,Male,Regular,Easy,18,8,Yes,2023-05-30,14:04:37,14,na dey make class funny pas even though man go best make dry,60,13,0.39444444444444443,positive
+CPE 341,Me wey be senior dev con dey struggle for LA class ha,No,Male,Regular,Challenging,12,3,Yes,2023-05-30,14:05:31,14,wey senior dev con dey struggle la class ha,43,9,0.0,negative
+CPE 381,one-unit course wey get problem. nonsense,No,Male,Regular,Difficult,1,1,Yes,2023-05-30,14:06:16,14,oneunit course wey get problem nonsense,39,6,0.0,negative
+MEE 361,I just hope I pass this course cos omo,Yes,Male,Regular,Moderate,11,4,Yes,2023-05-30,14:07:50,14,hope pas course co omo,22,5,0.0,negative
+GSE 301,SImple course,No,Male,Regular,Easy,10,10,Yes,2023-05-30,14:12:28,14,simple course,13,2,0.0,negative
+CPE 311,I struggled at the start but it all went easy as time goes by,Yes,Female,Irregular,Easy,19,9,Yes,2023-05-30,14:14:02,14,struggled start went easy time go,33,6,0.43333333333333335,positive
+CPE 321,Awful & terrible from both the course and lecturer,No,Female,Irregular,Difficult,8,0,Yes,2023-05-30,14:14:45,14,awful terrible course lecturer,30,4,-1.0,negative
+CPE 331,Nice teaching from scientist,No,Female,Irregular,Moderate,16,7,Yes,2023-05-30,14:15:35,14,nice teaching scientist,23,3,0.6,positive
+CPE 341,I no sabi code,No,Female,Irregular,Challenging,8,3,Yes,2023-05-30,14:16:24,14,sabi code,9,2,0.0,negative
+CPE 381,"I learnt a lot in the course, but the lecturers are too demanding",No,Female,Regular,Moderate,3,5,Yes,2023-05-30,14:17:19,14,learnt lot course lecturer demanding,36,5,0.0,negative
+MEE 361,Applied my math's knowledge from 200L for the most part of course,Yes,Female,Irregular,Moderate,18,6,Yes,2023-05-30,14:18:31,14,applied math knowledge 200l part course,39,6,0.0,negative
+GSE 301,good one,Yes,Female,Regular,Easy,7,9,Yes,2023-05-30,14:19:28,14,good one,8,2,0.7,positive
+CPE 311,cool one from aunty,Yes,Male,Regular,Easy,15,10,Yes,2023-05-30,14:20:21,14,cool one aunty,14,3,0.35,positive
+CPE 321,"Akanni, you are a bad teacher wtf",No,Male,Regular,Difficult,10,0,Yes,2023-05-30,14:22:16,14,akanni bad teacher wtf,22,4,-0.5999999999999999,negative
+CPE 331,nice,No,Male,Regular,Easy,16,9,Yes,2023-05-30,14:24:19,14,nice,4,1,0.6,positive
+CPE 341,thank God for my coding skills  bruh,Yes,Male,Regular,Moderate,15,9,Yes,2023-05-30,14:26:11,14,thank god coding skill bruh,27,5,0.0,negative
+CPE 381,neutral,No,Male,Regular,Challenging,5,5,Yes,2023-05-30,14:31:52,14,neutral,7,1,0.0,negative
+GSE 301,nice and easy course,Yes,Male,Regular,Easy,7,10,Yes,2023-05-30,14:33:14,14,nice easy course,16,3,0.5166666666666666,positive
+CPE 311,great teaching method from lecturer,Yes,Female,Regular,Easy,18,10,Yes,2023-05-30,14:34:28,14,great teaching method lecturer,30,4,0.8,positive
+CPE 321,I hate this course plus the man,No,Female,Irregular,Difficult,5,0,Yes,2023-05-30,14:35:26,14,hate course plus man,20,4,-0.8,negative
+CPE 331,way to go. Nice job from lecturer,No,Female,Regular,Moderate,17,7,Yes,2023-05-30,14:36:39,14,way go nice job lecturer,24,5,0.6,positive
+CPE 341,"LA didnt start well but Engineer Adeboye did well but in the end, the course was tricky",No,Female,Regular,Challenging,11,5,Yes,2023-05-30,14:38:13,14,la didnt start well engineer adeboye well end course tricky,59,10,0.0,negative
+CPE 381,bad,No,Female,Regular,Challenging,2,3,Yes,2023-05-30,14:39:07,14,bad,3,1,-0.6999999999999998,negative
+MEE 361,fair play,No,Female,Regular,Moderate,14,6,Yes,2023-05-30,14:41:42,14,fair play,9,2,0.7,positive
+CPE 311,good,Yes,Male,Regular,Easy,19,10,Yes,2023-05-30,14:42:35,14,good,4,1,0.7,positive
+CPE 321,course should  not be difficult but lecturer messed it up,No,Male,Regular,Moderate,13,5,Yes,2023-05-30,14:43:46,14,course difficult lecturer messed,32,4,-0.5,negative
+CPE 331,positive experience,No,Male,Regular,Easy,17,9,Yes,2023-05-30,14:44:16,14,positive experience,19,2,0.22727272727272727,positive
+CPE 341,love to code and course is about coding. A plus for me,Yes,Male,Regular,Easy,18,9,Yes,2023-05-30,14:45:04,14,love code course coding plus,28,5,0.5,positive
+CPE 381,awful practicals. course handlers are tough.,No,Male,Regular,Challenging,4,4,Yes,2023-05-30,14:45:57,14,awful practicals course handler tough,37,5,-0.6944444444444444,negative
+MEE 361,nice,Yes,Male,Regular,Easy,13,9,Yes,2023-05-30,14:46:29,14,nice,4,1,0.6,positive
+GSE 301,A bonus course for me,Yes,Male,Regular,Easy,8,10,Yes,2023-05-30,14:46:57,14,bonus course,12,2,0.0,negative
+CPE 311,the best course and lecturer,Yes,Female,Regular,Easy,15,10,Yes,2023-05-30,14:47:59,14,best course lecturer,20,3,1.0,positive
+CPE 321,akanni does not know how to teach,No,Female,Regular,Challenging,10,2,Yes,2023-05-30,14:48:58,14,akanni know teach,17,3,0.0,negative
+CPE 331,awesome,No,Female,Regular,Easy,12,9,Yes,2023-05-30,14:49:48,14,awesome,7,1,1.0,positive
+CPE 341,love to code,Yes,Female,Regular,Moderate,7,7,Yes,2023-05-30,14:50:42,14,love code,9,2,0.5,positive
+CPE 381,practicals were okay for me sha,No,Female,Regular,Easy,12,8,Yes,2023-05-30,14:52:57,14,practicals okay sha,19,3,0.5,positive
+MEE 361,nice,Yes,Female,Regular,Easy,15,9,Yes,2023-05-30,14:53:35,14,nice,4,1,0.6,positive
+GSE 301,GSE was very okay,Yes,Female,Irregular,Easy,5,9,Yes,2023-05-30,14:54:23,14,gse okay,8,2,0.5,positive
+CPE 311,nice course,Yes,Male,Regular,Easy,10,9,Yes,2023-05-30,14:55:21,14,nice course,11,2,0.6,positive
+GSE 301,easy and no wahala,Yes,Female,Regular,Easy,9,8,Yes,2023-05-30,14:56:07,14,easy wahala,11,2,0.43333333333333335,positive
+CPE 321,terrible way of teaching with the I-dont-care attitude,No,Female,Irregular,Difficult,4,0,Yes,2023-05-30,14:57:17,14,terrible way teaching idontcare attitude,40,5,-1.0,negative
+CPE 341,do not like coding,No,Male,Irregular,Difficult,0,0,Yes,2023-05-30,15:02:16,15,like coding,11,2,0.0,negative
+CPE 381,this practical is hard on top 1 unit course haba,No,Female,Regular,Difficult,5,0,Yes,2023-05-30,15:03:39,15,practical hard top unit course haba,35,6,0.10416666666666666,positive
+CPE 321,"not the right way to teach, Mr Akanni",No,Male,Occasional,Difficult,3,0,Yes,2023-05-30,15:05:02,15,right way teach mr akanni,25,5,0.2857142857142857,positive
