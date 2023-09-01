@@ -114,7 +114,7 @@ if st.button("Clear"):
     text = ''
 
 # Predict the sentiment with a spinner
-with st.spinner("The model is running..."):
+with st.spinner("Loading Output.."):
     if text:
         preprocessed_text = preprocessor([text])
         sentiment = classifier.predict(preprocessed_text)
