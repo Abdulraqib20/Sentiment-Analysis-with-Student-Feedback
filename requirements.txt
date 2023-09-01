@@ -9,7 +9,7 @@ notebook==6.4.12
 notebook-shim==0.1.0
 numpy==1.23.5
 pandas==1.5.3
-protobuf==3.19.4
+protobuf>=3.19.4
 streamlit==1.26.0
 seaborn==0.12.1
 semver==2.13.0
