@@ -19,4 +19,4 @@ tensorboard-plugin-wit==1.8.1
 tensorflow-estimator==2.9.0
 tensorflow-io-gcs-filesystem==0.26.0
 transformers==4.25.1
-sklearn
+scikit-learn
