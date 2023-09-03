@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+# import matplotlib.pyplot as plt
+# import seaborn as sns
+# sns.set_theme(style='white')
+import plotly.express as px
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import re
 import string
 import tensorflow as tf
@@ -97,20 +102,21 @@ st.set_page_config(
 
 # Add the subheading and image in a container
 with st.container():
-    st.subheader("Raqib's Sentiment Analysis WebApp")
+    st.subheader("Sentiment Analysis App")
     st.image("sentim.jpg")
 
 # Add an introductory paragraph
 st.markdown("""
-This web application is a sentiment analysis tool developed by Abdulraqib (raqibcodes). It can be used to determine whether user-entered text has a positive or negative sentiment. The underlying text classification model was trained on feedback data collected from 300 level undergraduate Computer Engineering students at the University of Ilorin (my classmates). Subsequently, the model underwent fine-tuning using BERT and KerasNLP techniques, resulting in an impressive accuracy score of 96%. The objective is to uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions and satisfaction regarding their educational experience.  
+This web application is a sentiment analysis tool developed by Raqib (popularly known as raqibcodes). It can be used to determine whether user-entered text has a Positive or Negative sentiment. The underlying text classification model was trained on feedback data collected from 300 level undergraduate Computer Engineering students at the University of Ilorin (who are Raqib's peers). Subsequently, the model underwent fine-tuning using BERT and KerasNLP techniques, resulting in an impressive accuracy score of 96%. The objective is to uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions and satisfaction regarding their educational experience.  
 To utilize the application, simply input your text, and it will promptly reveal the underlying sentiment.
+The app also has Exploratory Data Analysis capabilities.
 """)
 
 # Add text input
 text = st.text_input("Enter your text:")
 
 # Add a clear button
-if st.button("Clear"):
+if st.button("Clear Output"):
     text = ''
 
 # Predict the sentiment with a spinner
@@ -127,3 +133,160 @@ with st.spinner("Loading Output.."):
             st.success(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
         else:
             st.error(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
+            
+            
+df1['Sentiments'] = df1['Sentiments'].replace({
+    0: 'negative',
+    1:'positive'
+})    
+    
+st.markdown(
+    f"""
+    <style>
+        div.stButton > button:first-child {{
+            background-color: #636EFA;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Create a separate view for visualizations
+if st.button("Explore Visualizations"):
+    # Create a subpage for visualizations
+    with st.expander("Sentiments Distribution"):
+        sentiment_counts = df1['Sentiments'].value_counts()
+        fig = px.bar(sentiment_counts, x=sentiment_counts.index, y=sentiment_counts.values, labels={'x': 'Sentiment', 'y': 'Count'})
+        fig.update_layout(
+            xaxis=dict(type='category'),
+            title="Distribution of Sentiments",
+            xaxis_title="Sentiment",
+            yaxis_title="Count",
+        )
+        st.plotly_chart(fig)
+
+    with st.expander("Sentiments Distribution (Pie Chart)"):
+        label_data = df1['Sentiments'].value_counts()
+        fig = px.pie(label_data, values=label_data.values, names=label_data.index, hole=0.4)
+        fig.update_traces(textposition='inside', textinfo='percent+label')
+        fig.update_layout(title="Sentiments Distribution (Pie Chart)")
+        st.plotly_chart(fig)
+
+    with st.expander("Word Cloud Visualization"):
+        all_feedback = ' '.join(X_preprocessed)
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
+        fig = px.imshow(wordcloud)
+        fig.update_layout(title='Word Cloud of Overall Feedback')
+        fig.update_xaxes(showticklabels=False)
+        fig.update_yaxes(showticklabels=False)
+        st.plotly_chart(fig)
+        
+    with st.expander("Course Difficulty"):
+        course_difficulty_counts = df1['Course Difficulty'].value_counts()
+        fig = px.bar(course_difficulty_counts, x=course_difficulty_counts.index, y=course_difficulty_counts.values, labels={'x': 'Course Difficulty', 'y': 'Count'})
+        fig.update_layout(
+            xaxis=dict(type='category'),
+            title="Feedback Count by Course Difficulty",
+            xaxis_title="Course Difficulty",
+            yaxis_title="Count",
+        )
+        st.plotly_chart(fig)
+
+    with st.expander("Feedback Count by Course Code"):
+        course_code_counts = df1['Course Code'].value_counts()
+        fig = px.bar(course_code_counts, x=course_code_counts.index, y=course_code_counts.values, labels={'x': 'Course Code', 'y': 'Count'})
+        fig.update_layout(
+            xaxis=dict(type='category'),
+            title="Feedback Count by Course Code",
+            xaxis_title="Course Code",
+            yaxis_title="Count",
+        )
+        st.plotly_chart(fig)
+
+    with st.expander("Gender Distribution"):
+        gender_counts = df1['Gender'].value_counts()
+        fig = px.pie(gender_counts, values=gender_counts.values, names=gender_counts.index, hole=0.4)
+        fig.update_traces(textposition='inside', textinfo='percent+label')
+        fig.update_layout(title="Gender Distribution")
+        st.plotly_chart(fig)
+        
+    with st.expander("Most Frequently Used Words"):
+        from collections import Counter
+        word_frequency = Counter(" ".join(df1['Feedback']).split()).most_common(30)
+        word_df = pd.DataFrame(word_frequency, columns=['Word', 'Frequency'])
+        fig = px.bar(word_df, x='Frequency', y='Word', orientation='h', title='Top 30 Most Frequently Used Words')
+        st.plotly_chart(fig)
+        
+    with st.expander("Course Code distribution by Sentiment distribution"):
+        fig = px.histogram(df1, x='Course Code', color='Sentiments', title='Course Code distribution by Sentiment distribution')
+        fig.update_xaxes(title='Course Code')
+        fig.update_yaxes(title='Count of Feedback')
+        st.plotly_chart(fig)
+        
+    with st.expander("Sentiment Distribution by Course Difficulty"):
+        fig = px.histogram(df1, x='Course Difficulty', color='Sentiments', 
+                           title='Sentiment Distribution by Course Difficulty',
+                           category_orders={"Course Difficulty": ['Easy', 'Moderate', 'Challenging', 'Difficult']})
+        fig.update_xaxes(title='Course Difficulty')
+        fig.update_yaxes(title='Count of Feedback')
+        st.plotly_chart(fig)
+        
+    with st.expander("Sentiment Distribution by Gender"):
+        fig = px.histogram(df1, x='Gender', color='Sentiments', title='Sentiment Distribution by Gender')
+        fig.update_xaxes(title='Gender')
+        fig.update_yaxes(title='Count of Feedback')
+        st.plotly_chart(fig)
+        
+    with st.expander("Distribution of Word Count for different levels of Course Difficulty"):
+        fig = px.box(df1, x='Course Difficulty', y='Word_Count', 
+                     title='Distribution of Word Count for different levels of Course Difficulty',
+                     category_orders={"Course Difficulty": ['Easy', 'Moderate', 'Challenging', 'Difficult']})
+        fig.update_xaxes(title='Course Difficulty')
+        fig.update_yaxes(title='Word Count')
+        st.plotly_chart(fig)
+        
+    with st.expander("Distribution of Study Hours (per week) and Overall Satisfaction"):
+        fig = px.scatter(df1, x='Study Hours (per week)', y='Overall Satisfaction')
+        fig.update_layout(
+            title="Distribution of Study Hours (per week) and Overall Satisfaction",
+            xaxis_title="Study Hours (per week)",
+            yaxis_title="Overall Satisfaction",
+        )
+        st.plotly_chart(fig)
+        
+    with st.expander("Sentiment score vs. Overall Satisfaction"):
+        fig = px.scatter(df1, x='Sentiment_Scores', y='Overall Satisfaction')
+        fig.update_layout(
+            title="Sentiment score vs. Overall Satisfaction",
+            xaxis_title="Sentiment Score",
+            yaxis_title="Overall Satisfaction",
+        )
+        st.plotly_chart(fig)
+        
+    with st.expander("Correlation between Features"):
+        correlation_matrix = df1[['Study Hours (per week)', 'Overall Satisfaction', 'Hour', 'Sentiment_Scores']].corr()
+        fig = px.imshow(correlation_matrix, labels=dict(x="Features", y="Features", color="Correlation"))
+        fig.update_layout(
+            title="Correlation between variables in the dataset",
+            xaxis_title="Features",
+            yaxis_title="Features",
+        )
+        st.plotly_chart(fig)
+        
+# Sentiment Summary
+st.title("Sentiment Summary")
+
+# Calculate summary statistics
+average_sentiment = df1["Sentiment_Scores"].mean()
+positive_feedback_count = (df1["Sentiments"] == "positive").sum()
+negative_feedback_count = (df1["Sentiments"] == "negative").sum()
+
+# Display summary statistics
+st.write(f"Average Sentiment Score: {average_sentiment:.2f}")
+st.write(f"Number of Positive Feedback: {positive_feedback_count}")
+st.write(f"Number of Negative Feedback: {negative_feedback_count}")
+
+
