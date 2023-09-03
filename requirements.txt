@@ -20,3 +20,4 @@ tensorflow-estimator==2.9.0
 tensorflow-io-gcs-filesystem==0.26.0
 transformers==4.25.1
 scikit-learn
+plotly==5.16.1
