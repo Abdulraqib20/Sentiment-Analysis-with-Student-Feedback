@@ -12,11 +12,6 @@ import tensorflow as tf
 from tensorflow import keras
 import keras_nlp
 from transformers import BertTokenizer, TFBertForSequenceClassification
-import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
@@ -154,7 +149,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Create a separate view for visualizations
+# separate view for visualizations
 if st.button("Explore Visualizations"):
     # Create a subpage for visualizations
     with st.expander("Sentiments Distribution"):
@@ -279,7 +274,7 @@ if st.button("Explore Visualizations"):
 # Sentiment Summary
 st.title("Sentiment Summary")
 
-# Calculate summary statistics
+# summary statistics
 average_sentiment = df1["Sentiment_Scores"].mean()
 positive_feedback_count = (df1["Sentiments"] == "positive").sum()
 negative_feedback_count = (df1["Sentiments"] == "negative").sum()
@@ -289,4 +284,17 @@ st.write(f"Average Sentiment Score: {average_sentiment:.2f}")
 st.write(f"Number of Positive Feedback: {positive_feedback_count}")
 st.write(f"Number of Negative Feedback: {negative_feedback_count}")
 
+# footer
 
+# line separator
+st.markdown('<hr style="border: 2px solid #ddd;">', unsafe_allow_html=True)
+
+# footer text
+st.markdown(
+    """
+    <div style="text-align: center; padding: 10px;">
+        Developed by <a href="https://github.com/Abdulraqib20" target="_blank">raqibcodes</a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
