@@ -102,10 +102,22 @@ st.set_page_config(
     # background_color="#F5F5F5"
 )
 
-# Add the subheading and image in a container
-with st.container():
-    st.subheader("Sentiment Analysis App")
-    st.image("sentim.jpg")
+# Center-align subheading and image using HTML <div> tags
+st.markdown(
+    """
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <h2>Sentiment Analysis App</h2>
+
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+st.image("sentim.jpg")
+
+# # Add the subheading and image in a container
+# with st.container():
+#     st.subheader("Sentiment Analysis App")
+#     st.image("sentim.jpg")
 
 # Add an introductory paragraph
 st.markdown("""
