@@ -25,3 +25,4 @@ tenacity==8.2.3
 packaging==21.3
 wordcloud==1.8.2.2
 Pillow==9.3.0
+jax
