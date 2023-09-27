@@ -92,6 +92,7 @@ classifier.compile(
 )
 classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 
+cwd = os.getcwd()
 # Save the model after training
 @st.cache
 def load_model():
