@@ -112,7 +112,7 @@ test_loss, test_accuracy = classifier.evaluate(test_cached)
 
 # model = tf.keras.models.load_model(saved_model_dir)
 
-model = keras.models.load_model('main.keras')
+# model = keras.models.load_model('main.keras')
 
 # Create a Streamlit app
 st.set_page_config(
