@@ -102,7 +102,7 @@ classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 # model = load_model()
 
 # save model
-classifier2.save("keras2", save_format='keras')
+classifier.save("keras2", save_format='keras')
 
 # load model
 model = keras.models.load_model('keras2')
