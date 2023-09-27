@@ -112,7 +112,6 @@ test_loss, test_accuracy = classifier.evaluate(test_cached)
 
 # model = tf.keras.models.load_model(saved_model_dir)
 
-@st.cache
 model = keras.models.load_model('main.keras')
 
 # Create a Streamlit app
