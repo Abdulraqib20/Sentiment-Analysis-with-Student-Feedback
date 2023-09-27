@@ -110,12 +110,14 @@ test_loss, test_accuracy = classifier.evaluate(test_cached)
 cwd = os.getcwd()
 saved_model_dir = os.path.join(cwd, "main.keras")
 
-# Load the model
-@st.cache
-def load_model():
-    return tf.keras.models.load_model(saved_model_dir)
+model = tf.keras.models.load_model(saved_model_dir)
 
-model = load_model()
+# # Load the model
+# @st.cache
+# def load_model():
+#     return tf.keras.models.load_model(saved_model_dir)
+
+# model = load_model()
 
 # # save model
 # classifier.save("keras2", save_format='keras')
