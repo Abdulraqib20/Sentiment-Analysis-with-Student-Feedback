@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
 # import matplotlib.pyplot as plt
 # import seaborn as sns
 # sns.set_theme(style='white')
@@ -94,8 +95,14 @@ classifier.compile(
 )
 classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 
-# Save the model after training
-model_save_path = 'sentiment_model.h5'
+# # Save the model after training
+# model_save_path = 'sentiment_model.h5'
+# classifier.save(model_save_path)
+
+# Save the model to a new directory
+model_directory = 'saved_model'
+os.makedirs(model_directory, exist_ok=True)
+model_save_path = os.path.join(model_directory, 'sentiment_model.h5')
 classifier.save(model_save_path)
 
 # Load the saved model
