@@ -90,11 +90,14 @@ classifier.compile(
     jit_compile=True,
      metrics=["accuracy"],
 )
-classifier.fit(train_cached, validation_data=test_cached,epochs=10)
+classifier.fit(train_cached, validation_data=test_cached,epochs=20)
+
+# Evaluate the model on the test set
+test_loss, test_accuracy = classifier.evaluate(test_cached)
 
 # Get the current working directory
 cwd = os.getcwd()
-saved_model_dir = os.path.join(cwd, "secondmodel.keras")
+saved_model_dir = os.path.join(cwd, "main.keras")
 
 # load model
 @st.cache
