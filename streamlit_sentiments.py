@@ -94,6 +94,13 @@ classifier.compile(
 )
 classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 
+# Save the model after training
+model_save_path = 'sentiment_model.h5'
+classifier.save(model_save_path)
+
+# Load the saved model
+loaded_model = keras.models.load_model(model_save_path)
+
 # Create a Streamlit app
 st.set_page_config(
     page_title="Raqib Sentiments App",
@@ -133,11 +140,11 @@ text = st.text_input("Enter your text:")
 if st.button("Clear Output"):
     text = ''
 
-# Predict the sentiment with a spinner
+# Predict the sentiment using the loaded model
 with st.spinner("Loading Output.."):
     if text:
         preprocessed_text = preprocessor([text])
-        sentiment = classifier.predict(preprocessed_text)
+        sentiment = loaded_model.predict(preprocessed_text)
 
         sentiment_categories = ["Negative", "Positive"]
         sentiment_label = sentiment_categories[np.argmax(sentiment)]
