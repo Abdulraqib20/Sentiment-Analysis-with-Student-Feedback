@@ -113,8 +113,7 @@ saved_model_dir = os.path.join(cwd, "main.keras")
 # Load the model
 @st.cache
 def load_model():
-    custom_objects = {"BertClassifier": BertClassifier}
-    return tf.keras.models.load_model(saved_model_dir, custom_objects=custom_objects)
+    return tf.keras.models.load_model(saved_model_dir)
 
 model = load_model()
 
