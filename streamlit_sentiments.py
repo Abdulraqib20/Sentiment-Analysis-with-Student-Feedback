@@ -94,7 +94,7 @@ classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 
 # Get the current working directory
 cwd = os.getcwd()
-saved_model_dir = os.path.join(cwd, "firstmodel.keras")
+saved_model_dir = os.path.join(cwd, "secondmodel.keras")
 
 # load model
 @st.cache
