@@ -92,11 +92,13 @@ classifier.compile(
 )
 classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 
+# Get the current working directory
 cwd = os.getcwd()
-# Save the model after training
+saved_model_dir = os.path.join(cwd, "keras2")
+
 @st.cache
 def load_model():
-    return tf.keras.models.load_model(os.path.join(cwd, "keras2", "saved_model.pb"))
+    return tf.keras.models.load_model(saved_model_dir)
 
 model = load_model()
 
