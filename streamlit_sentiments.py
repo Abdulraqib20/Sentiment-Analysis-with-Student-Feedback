@@ -10,6 +10,7 @@ import tensorflow as tf
 from tensorflow import keras
 import keras_nlp
 from transformers import BertTokenizer, TFBertForSequenceClassification
+from keras_nlp.models import BertClassifier
 
 import nltk
 nltk.download('punkt')
@@ -95,14 +96,26 @@ classifier.fit(train_cached, validation_data=test_cached,epochs=20)
 # Evaluate the model on the test set
 test_loss, test_accuracy = classifier.evaluate(test_cached)
 
+# # Get the current working directory
+# cwd = os.getcwd()
+# saved_model_dir = os.path.join(cwd, "main.keras")
+
+# # load model
+# @st.cache
+# def load_model():
+#     return tf.keras.models.load_model(saved_model_dir)
+# model = load_model()
+
 # Get the current working directory
 cwd = os.getcwd()
 saved_model_dir = os.path.join(cwd, "main.keras")
 
-# load model
+# Load the model
 @st.cache
 def load_model():
-    return tf.keras.models.load_model(saved_model_dir)
+    custom_objects = {"BertClassifier": BertClassifier}
+    return tf.keras.models.load_model(saved_model_dir, custom_objects=custom_objects)
+
 model = load_model()
 
 # # save model
