@@ -118,7 +118,7 @@ def save_model():
         file.write(model_code)
 
 # Load the model using st.cache_resource
-@st.cache_resource
+@st.cache
 def load_model():
     # Retrieve the encoded model code from the Python file
     encoded_model = eval(model_code)
