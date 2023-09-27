@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import base64
 import os
 # import matplotlib.pyplot as plt
 # import seaborn as sns
@@ -100,13 +101,38 @@ classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 # classifier.save(model_save_path)
 
 # Save the model to a new directory
-model_directory = 'saved_model'
-os.makedirs(model_directory, exist_ok=True)
-model_save_path = os.path.join(model_directory, 'sentiment_model.h5')
-classifier.save(model_save_path)
+def save_model():
+    # Save the model to a temporary file
+    model_save_path = 'temp_model.h5'
+    classifier.save(model_save_path)
 
-# Load the saved model
-loaded_model = keras.models.load_model(model_save_path)
+    # Encode the model file to base64
+    with open(model_save_path, "rb") as model_file:
+        encoded_model = base64.b64encode(model_file.read()).decode()
+
+    # Embed the encoded model as a string in the Python code
+    model_code = f"model_code = {repr(encoded_model)}"
+
+    # Write the model code to the Python file
+    with open(__file__, "a") as file:
+        file.write(model_code)
+
+# Load the model using st.cache_resource
+@st.cache_resource
+def load_model():
+    # Retrieve the encoded model code from the Python file
+    encoded_model = eval(model_code)
+
+    # Decode the base64 encoded model to a temporary file
+    model_save_path = 'temp_model.h5'
+    with open(model_save_path, "wb") as model_file:
+        model_file.write(base64.b64decode(encoded_model))
+
+    # Load the model
+    loaded_model = keras.models.load_model(model_save_path)
+    return loaded_model
+
+model = load_model()
 
 # Create a Streamlit app
 st.set_page_config(
@@ -151,7 +177,7 @@ if st.button("Clear Output"):
 with st.spinner("Loading Output.."):
     if text:
         preprocessed_text = preprocessor([text])
-        sentiment = loaded_model.predict(preprocessed_text)
+        sentiment = model.predict(preprocessed_text)
 
         sentiment_categories = ["Negative", "Positive"]
         sentiment_label = sentiment_categories[np.argmax(sentiment)]
