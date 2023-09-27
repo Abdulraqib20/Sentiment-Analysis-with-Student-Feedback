@@ -157,7 +157,7 @@ if st.button("Clear Output"):
 with st.spinner("Loading Output.."):
     if text:
         preprocessed_text = preprocessor([text])
-        sentiment = model.predict(preprocessed_text)
+        sentiment = classifier.predict(preprocessed_text)
 
         sentiment_categories = ["Negative", "Positive"]
         sentiment_label = sentiment_categories[np.argmax(sentiment)]
