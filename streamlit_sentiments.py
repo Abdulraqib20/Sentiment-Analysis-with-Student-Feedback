@@ -93,19 +93,20 @@ classifier.compile(
 classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 
 # Get the current working directory
-# cwd = os.getcwd()
-# saved_model_dir = os.path.join(cwd, "keras2")
-
-# @st.cache
-# def load_model():
-#     return tf.keras.models.load_model(saved_model_dir)
-# model = load_model()
-
-# save model
-classifier.save("keras2", save_format='keras')
+cwd = os.getcwd()
+saved_model_dir = os.path.join(cwd, "firstmodel.keras")
 
 # load model
-model = keras.models.load_model('keras2')
+@st.cache
+def load_model():
+    return tf.keras.models.load_model(saved_model_dir)
+model = load_model()
+
+# # save model
+# classifier.save("keras2", save_format='keras')
+
+# # load model
+# model = keras.models.load_model('keras2')
 
 # Create a Streamlit app
 st.set_page_config(
