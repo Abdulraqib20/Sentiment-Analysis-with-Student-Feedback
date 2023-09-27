@@ -107,23 +107,13 @@ test_loss, test_accuracy = classifier.evaluate(test_cached)
 # model = load_model()
 
 # Get the current working directory
-cwd = os.getcwd()
-saved_model_dir = os.path.join(cwd, "main.keras")
+# cwd = os.getcwd()
+# saved_model_dir = os.path.join(cwd, "main.keras")
 
-model = tf.keras.models.load_model(saved_model_dir)
+# model = tf.keras.models.load_model(saved_model_dir)
 
-# # Load the model
-# @st.cache
-# def load_model():
-#     return tf.keras.models.load_model(saved_model_dir)
-
-# model = load_model()
-
-# # save model
-# classifier.save("keras2", save_format='keras')
-
-# # load model
-# model = keras.models.load_model('keras2')
+@st.cache
+model = keras.models.load_model('main.keras')
 
 # Create a Streamlit app
 st.set_page_config(
