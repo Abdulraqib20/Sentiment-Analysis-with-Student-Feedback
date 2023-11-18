@@ -25,6 +25,14 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
 
+# Configure Streamlit page
+st.set_page_config(
+    page_title="Raqib Sentiments App",
+    page_icon="R.png",
+    layout="wide",
+    # background_color="#F5F5F5"
+)
+
 # Load the exported data using st.cache
 @st.cache(allow_output_mutation=True)
 def load_data():
@@ -97,14 +105,6 @@ classifier.compile(
      metrics=["accuracy"],
 )
 classifier.fit(train_cached, validation_data=test_cached,epochs=10)
-
-# Create a Streamlit app
-st.set_page_config(
-    page_title="Raqib Sentiments App",
-    page_icon="R.png",
-    layout="wide",
-    # background_color="#F5F5F5"
-)
 
 # Add the subheading and image in a container
 with st.container():
