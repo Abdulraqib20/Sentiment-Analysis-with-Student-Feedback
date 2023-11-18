@@ -121,6 +121,9 @@ The app also has Exploratory Data Analysis capabilities.
 # Add text input
 text = st.text_input("Enter your text:")
 
+# Initialize a flag for whether the "Submit Predictions" button is clicked
+submit_clicked = False
+
 # Add select boxes with no default selection
 course_code = st.selectbox("Course Code", ['CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
 previous_experience = st.selectbox("Previous Experience", ["", "Yes", "No"])
@@ -135,6 +138,22 @@ overall_satisfaction = st.slider("Overall Satisfaction", 1, 10)
 
 # Add the submit button
 if st.button("Submit Predictions"):
+    # Check if all required fields are filled
+    if text and course_code and previous_experience and gender and attendance and course_difficulty and department:
+        # Set the flag to True when the button is clicked and all fields are filled
+        submit_clicked = True
+    else:
+        st.warning("Please fill in all the required fields before submitting.")
+
+# Check if the "Submit Predictions" button is clicked and all required fields are filled before executing the following code
+if submit_clicked:
+    # Load the exported data using st.cache
+    @st.cache(allow_output_mutation=True)
+    def load_data():
+        return pd.read_csv('exported_sentiments.csv')
+
+    df1 = load_data()
+
     # Predict the sentiment with a spinner
     with st.spinner("Loading Output.."):
         if text:
