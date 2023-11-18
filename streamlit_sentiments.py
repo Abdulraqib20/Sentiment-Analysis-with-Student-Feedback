@@ -120,27 +120,27 @@ if st.button("Submit Predictions"):
             preprocessed_text = preprocessor([text])
             sentiment = classifier.predict(preprocessed_text)
 
-            sentiment_categories = ["Negative", "Positive"]
+            sentiment_categories = ["negative", "positive"]
             sentiment_label = sentiment_categories[np.argmax(sentiment)]
             confidence = (100 * np.max(sentiment)).round(2)
 
-            if sentiment_label == "Positive":
+            if sentiment_label == "positive":
                 st.success(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
             else:
                 st.error(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
 
             # Append the new row to the DataFrame with numerical label
-            new_row = {'Feedback': text, 'Sentiments': 1 if sentiment_label == "Positive" else 0}
+            new_row = {'Feedback': text, 'Sentiments': 1 if sentiment_label == "positive" else 0}
             df1 = pd.concat([df1, pd.DataFrame([new_row])], ignore_index=True)
 
             # Save the updated dataset to the CSV file
             df1.to_csv('exported_sentiments.csv', index=False)
             
             
-# df1['Sentiments'] = df1['Sentiments'].replace({
-#     0: 'negative',
-#     1:'positive'
-# })    
+df1['Sentiments'] = df1['Sentiments'].replace({
+    0: 'negative',
+    1:'positive'
+})    
     
 st.markdown(
     f"""
