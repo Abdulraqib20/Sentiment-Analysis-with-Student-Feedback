@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import os
+# import matplotlib.pyplot as plt
+# import seaborn as sns
+# sns.set_theme(style='white')
 import plotly.express as px
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import re
@@ -10,14 +12,6 @@ import tensorflow as tf
 from tensorflow import keras
 import keras_nlp
 from transformers import BertTokenizer, TFBertForSequenceClassification
-from keras_nlp.models import BertClassifier
-
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
@@ -55,9 +49,13 @@ X_preprocessed = [preprocess_text(text) for text in X]
 # Split the data into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(pd.Series(X_preprocessed), y, test_size=0.25)
 
-# Convert labels to one-hot encoded format
+# # Convert labels to one-hot encoded format
 y_train = tf.keras.utils.to_categorical(y_train, num_classes=2, dtype='float32')
 y_test = tf.keras.utils.to_categorical(y_test, num_classes=2, dtype='float32')
+
+# Convert labels to numerical format
+y_train = np.array(y_train)
+y_test = np.array(y_test)
 
 # Load the pretrained BERT model
 model_name = "bert_tiny_en_uncased_sst2"
@@ -91,28 +89,7 @@ classifier.compile(
     jit_compile=True,
      metrics=["accuracy"],
 )
-classifier.fit(train_cached, validation_data=test_cached,epochs=20)
-
-# Evaluate the model on the test set
-test_loss, test_accuracy = classifier.evaluate(test_cached)
-
-# # Get the current working directory
-# cwd = os.getcwd()
-# saved_model_dir = os.path.join(cwd, "main.keras")
-
-# # load model
-# @st.cache
-# def load_model():
-#     return tf.keras.models.load_model(saved_model_dir)
-# model = load_model()
-
-# Get the current working directory
-# cwd = os.getcwd()
-# saved_model_dir = os.path.join(cwd, "main.keras")
-
-# model = tf.keras.models.load_model(saved_model_dir)
-
-# model = keras.models.load_model('main.keras')
+classifier.fit(train_cached, validation_data=test_cached,epochs=10)
 
 # Create a Streamlit app
 st.set_page_config(
@@ -122,22 +99,10 @@ st.set_page_config(
     # background_color="#F5F5F5"
 )
 
-# Center-align subheading and image using HTML <div> tags
-st.markdown(
-    """
-    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-        <h2>Sentiment Analysis App</h2>
-
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-st.image("sentim.jpg")
-
-# # Add the subheading and image in a container
-# with st.container():
-#     st.subheader("Sentiment Analysis App")
-#     st.image("sentim.jpg")
+# Add the subheading and image in a container
+with st.container():
+    st.subheader("Sentiment Analysis App")
+    st.image("sentim.jpg")
 
 # Add an introductory paragraph
 st.markdown("""
@@ -153,20 +118,28 @@ text = st.text_input("Enter your text:")
 if st.button("Clear Output"):
     text = ''
 
-# Predict the sentiment using the loaded model
-with st.spinner("Loading Output.."):
-    if text:
-        preprocessed_text = preprocessor([text])
-        sentiment = classifier.predict(preprocessed_text)
+if st.button("Submit Predictions"):
+    # Predict the sentiment with a spinner
+    with st.spinner("Loading Output.."):
+        if text:
+            preprocessed_text = preprocessor([text])
+            sentiment = classifier.predict(preprocessed_text)
 
-        sentiment_categories = ["Negative", "Positive"]
-        sentiment_label = sentiment_categories[np.argmax(sentiment)]
-        confidence = (100 * np.max(sentiment)).round(2)
+            sentiment_categories = ["Negative", "Positive"]
+            sentiment_label = sentiment_categories[np.argmax(sentiment)]
+            confidence = (100 * np.max(sentiment)).round(2)
 
-        if sentiment_label == "Positive":
-            st.success(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
-        else:
-            st.error(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
+            if sentiment_label == "Positive":
+                st.success(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
+            else:
+                st.error(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
+
+            # Append the new row to the DataFrame with numerical label
+            new_row = {'Feedback': text, 'Sentiments': 1 if sentiment_label == "positive" else 0}
+            df1 = pd.concat([df1, pd.DataFrame([new_row])], ignore_index=True)
+
+            # Save the updated dataset to the CSV file
+            df1.to_csv('exported_sentiments.csv', index=False)
             
             
 df1['Sentiments'] = df1['Sentiments'].replace({
@@ -313,7 +286,7 @@ if st.button("Explore Visualizations"):
 # Sentiment Summary
 st.title("Sentiment Summary")
 
-# summary statistics
+# Summary statistics
 average_sentiment = df1["Sentiment_Scores"].mean()
 positive_feedback_count = (df1["Sentiments"] == "positive").sum()
 negative_feedback_count = (df1["Sentiments"] == "negative").sum()
