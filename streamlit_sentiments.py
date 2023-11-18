@@ -22,10 +22,10 @@ from sklearn.model_selection import train_test_split
 df1 = pd.read_csv('exported_sentiments.csv')
 
 # Encode the target labels
-# df1['Sentiments'] = df1['Sentiments'].replace({
-#     'negative': 0,
-#     'positive': 1
-# })
+df1['Sentiments'] = df1['Sentiments'].replace({
+    'negative': 0,
+    'positive': 1
+})
 
 X = df1['Feedback']
 y = df1['Sentiments']
