@@ -18,8 +18,12 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
 
-# Load the exported data
-df1 = pd.read_csv('exported_sentiments.csv')
+# Load the exported data using st.cache
+@st.cache(allow_output_mutation=True)
+def load_data():
+    return pd.read_csv('exported_sentiments.csv')
+
+df1 = load_data()
 
 # Encode the target labels
 df1['Sentiments'] = df1['Sentiments'].replace({
