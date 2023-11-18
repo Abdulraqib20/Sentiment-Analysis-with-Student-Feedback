@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from datetime import datetime
 # import matplotlib.pyplot as plt
 # import seaborn as sns
 # sns.set_theme(style='white')
@@ -109,10 +110,19 @@ The app also has Exploratory Data Analysis capabilities.
 # Add text input
 text = st.text_input("Enter your text:")
 
-# Add a clear button
-if st.button("Clear Output"):
-    text = ''
+# Add select boxes with no default selection
+course_code = st.selectbox("Course Code", ['CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
+previous_experience = st.selectbox("Previous Experience", ["", "Yes", "No"])
+gender = st.selectbox("Gender", ['', 'Male', 'Female'])
+attendance = st.selectbox("Attendance", ['', 'Regular', 'Irregular', 'Occasional'])
+course_difficulty = st.selectbox("Course Difficulty", ['', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
+department = st.selectbox("Department", ['', "Yes", "No"])
 
+# Add sliders with no default value
+study_hours = st.slider("Study Hours (per week)", 0, 24)
+overall_satisfaction = st.slider("Overall Satisfaction", 1, 10)
+
+# Add the submit button
 if st.button("Submit Predictions"):
     # Predict the sentiment with a spinner
     with st.spinner("Loading Output.."):
@@ -130,17 +140,44 @@ if st.button("Submit Predictions"):
                 st.error(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
 
             # Append the new row to the DataFrame with numerical label
-            new_row = {'Feedback': text, 'Sentiments': 1 if sentiment_label == "positive" else 0}
+            new_row = {
+                'Course Code': course_code,
+                'Feedback': text,
+                'Previous Experience': previous_experience,
+                'Gender': gender,
+                'Attendance': attendance,
+                'Course Difficulty': course_difficulty,
+                'Study Hours (per week)': study_hours,
+                'Overall Satisfaction': overall_satisfaction,
+                'Department': department,
+                'Date': datetime.today().strftime('%Y-%m-%d'),
+                'Time': datetime.now().strftime('%H:%M:%S'),
+                'Hour': None,  # Hour will be extracted from Time
+                'Processed_Feedback': None,  # This will be updated after processing
+                'Char_Count': None,  # This will be updated after processing
+                'Word_Count': None,  # This will be updated after processing
+            }
+
+            # Extract Hour from Time
+            new_row['Hour'] = pd.to_datetime(new_row['Time']).hour if new_row['Time'] else None
+
+            # Process the text
+            processed_text = preprocess_text(text)
+            new_row['Processed_Feedback'] = processed_text
+            new_row['Char_Count'] = len(processed_text)
+            new_row['Word_Count'] = len(processed_text.split())
+
             df1 = pd.concat([df1, pd.DataFrame([new_row])], ignore_index=True)
 
             # Save the updated dataset to the CSV file
-            df1.to_csv('exported_sentiments.csv', index=False)
-            
-            
-df1['Sentiments'] = df1['Sentiments'].replace({
-    0: 'negative',
-    1:'positive'
-})    
+            try:
+                df1.to_csv('exported_sentiments.csv', index=False)
+                st.success("Data saved successfully.")
+            except Exception as e:
+                st.error(f"Error saving data: {str(e)}")
+                
+             # Update Sentiments values in real-time
+            df1['Sentiments'] = df1['Sentiments'].replace({0: 'negative', 1: 'positive'})
     
 st.markdown(
     f"""
@@ -281,13 +318,13 @@ if st.button("Explore Visualizations"):
 # Sentiment Summary
 st.title("Sentiment Summary")
 
-# Summary statistics
+ # Update summary statistics in real-time
 average_sentiment = df1["Sentiment_Scores"].mean()
 positive_feedback_count = (df1["Sentiments"] == "positive").sum()
 negative_feedback_count = (df1["Sentiments"] == "negative").sum()
 
-# Display summary statistics
-st.write(f"Average Sentiment Score: {average_sentiment:.2f}")
+# Display updated summary statistics
+# st.write(f"Average Sentiment Score: {average_sentiment:.2f}")
 st.write(f"Number of Positive Feedback: {positive_feedback_count}")
 st.write(f"Number of Negative Feedback: {negative_feedback_count}")
 
