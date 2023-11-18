@@ -21,11 +21,10 @@ from sklearn.model_selection import train_test_split
 df1 = pd.read_csv('exported_sentiments.csv')
 
 # Encode the target labels
-df1['Sentiments'] = df1['Sentiments'].replace({
-    'negative': 0,
-    'positive': 1
-})
-df1['Sentiments'].value_counts()
+# df1['Sentiments'] = df1['Sentiments'].replace({
+#     'negative': 0,
+#     'positive': 1
+# })
 
 X = df1['Feedback']
 y = df1['Sentiments']
@@ -52,10 +51,6 @@ X_train, X_test, y_train, y_test = train_test_split(pd.Series(X_preprocessed), y
 # # Convert labels to one-hot encoded format
 y_train = tf.keras.utils.to_categorical(y_train, num_classes=2, dtype='float32')
 y_test = tf.keras.utils.to_categorical(y_test, num_classes=2, dtype='float32')
-
-# Convert labels to numerical format
-y_train = np.array(y_train)
-y_test = np.array(y_test)
 
 # Load the pretrained BERT model
 model_name = "bert_tiny_en_uncased_sst2"
@@ -135,17 +130,17 @@ if st.button("Submit Predictions"):
                 st.error(f"The sentiment of your text is: {sentiment_label} with a {confidence} percent confidence.")
 
             # Append the new row to the DataFrame with numerical label
-            new_row = {'Feedback': text, 'Sentiments': 1 if sentiment_label == "positive" else 0}
+            new_row = {'Feedback': text, 'Sentiments': 1 if sentiment_label == "Positive" else 0}
             df1 = pd.concat([df1, pd.DataFrame([new_row])], ignore_index=True)
 
             # Save the updated dataset to the CSV file
             df1.to_csv('exported_sentiments.csv', index=False)
             
             
-df1['Sentiments'] = df1['Sentiments'].replace({
-    0: 'negative',
-    1:'positive'
-})    
+# df1['Sentiments'] = df1['Sentiments'].replace({
+#     0: 'negative',
+#     1:'positive'
+# })    
     
 st.markdown(
     f"""
