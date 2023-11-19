@@ -13,6 +13,8 @@ import tensorflow as tf
 from tensorflow import keras
 import keras_nlp
 from transformers import BertTokenizer, TFBertForSequenceClassification
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 import nltk
 nltk.download('punkt')
@@ -121,42 +123,20 @@ The app also has Exploratory Data Analysis capabilities.
 # Add text input
 text = st.text_input("Enter your text:")
 
-# Initialize a flag for whether the "Submit Predictions" button is clicked
-submit_clicked = False
-
-# Add select boxes with no default selection
-course_code = st.selectbox("Course Code", ['CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
-previous_experience = st.selectbox("Previous Experience", ["", "Yes", "No"])
-gender = st.selectbox("Gender", ['', 'Male', 'Female'])
-attendance = st.selectbox("Attendance", ['', 'Regular', 'Irregular', 'Occasional'])
-course_difficulty = st.selectbox("Course Difficulty", ['', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
-department = st.selectbox("Department", ['', "Yes", "No"])
-
-# Add sliders with no default value
-study_hours = st.slider("Study Hours (per week)", 0, 24)
-overall_satisfaction = st.slider("Overall Satisfaction", 1, 10)
-
-# Add the submit button
 if st.button("Submit Predictions"):
     # Check if all required fields are filled
-    if text and course_code and previous_experience and gender and attendance and course_difficulty and department:
-        # Set the flag to True when the button is clicked and all fields are filled
-        submit_clicked = True
+    if not text or st.selectbox("Course Code", ['CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301']) is None or \
+            st.selectbox("Previous Experience", ["Yes", "No"]) is None or \
+            st.selectbox("Gender", ['Male', 'Female']) is None or \
+            st.selectbox("Attendance", ['Regular', 'Irregular', 'Occasional']) is None or \
+            st.selectbox("Course Difficulty", ['Easy', 'Difficult', 'Challenging', 'Moderate']) is None or \
+            st.slider("Study Hours (per week)", 0, 24) is None or \
+            st.slider("Overall Satisfaction", 1, 10) is None or \
+            st.selectbox("Department", ["Yes", "No"]) is None:
+        st.warning("Please fill in all the required fields before submitting predictions.")
     else:
-        st.warning("Please fill in all the required fields before submitting.")
-
-# Check if the "Submit Predictions" button is clicked and all required fields are filled before executing the following code
-if submit_clicked:
-    # Load the exported data using st.cache
-    @st.cache(allow_output_mutation=True)
-    def load_data():
-        return pd.read_csv('exported_sentiments.csv')
-
-    df1 = load_data()
-
-    # Predict the sentiment with a spinner
-    with st.spinner("Loading Output.."):
-        if text:
+        # Predict the sentiment with a spinner
+        with st.spinner("Loading Output.."):
             preprocessed_text = preprocessor([text])
             sentiment = classifier.predict(preprocessed_text)
 
@@ -171,15 +151,15 @@ if submit_clicked:
 
             # Append the new row to the DataFrame with numerical label
             new_row = {
-                'Course Code': course_code,
+                'Course Code': st.selectbox("Course Code", ['CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301']),
                 'Feedback': text,
-                'Previous Experience': previous_experience,
-                'Gender': gender,
-                'Attendance': attendance,
-                'Course Difficulty': course_difficulty,
-                'Study Hours (per week)': study_hours,
-                'Overall Satisfaction': overall_satisfaction,
-                'Department': department,
+                'Previous Experience': st.selectbox("Previous Experience", ["Yes", "No"]),
+                'Gender': st.selectbox("Gender", ['Male', 'Female']),
+                'Attendance': st.selectbox("Attendance", ['Regular', 'Irregular', 'Occasional']),
+                'Course Difficulty': st.selectbox("Course Difficulty", ['Easy', 'Difficult', 'Challenging', 'Moderate']),
+                'Study Hours (per week)': st.slider("Study Hours (per week)", 0, 24),
+                'Overall Satisfaction': st.slider("Overall Satisfaction", 1, 10),
+                'Department': st.selectbox("Department", ["Yes", "No"]),
                 'Date': datetime.today().strftime('%Y-%m-%d'),
                 'Time': datetime.now().strftime('%H:%M:%S'),
                 'Hour': None,  # Hour will be extracted from Time
@@ -199,10 +179,21 @@ if submit_clicked:
 
             df1 = pd.concat([df1, pd.DataFrame([new_row])], ignore_index=True)
 
-            # Save the updated dataset to the CSV file
+            # Save the updated dataset to the CSV file on Google Drive
             try:
                 df1.to_csv('exported_sentiments.csv', index=False)
                 st.success("Data saved successfully.")
+
+                # Save to CSV in Google Drive
+                scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+                credentials = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+                gc = gspread.authorize(credentials)
+                spreadsheet = gc.open("Your Spreadsheet Title")
+                worksheet = spreadsheet.sheet1
+                worksheet.clear()  # Clear the existing data
+                worksheet.append_table(list(df1.columns))
+                worksheet.append_table(df1.values.tolist())
+                st.success("Data saved to Google Drive successfully.")
             except Exception as e:
                 st.error(f"Error saving data: {str(e)}")
                 
