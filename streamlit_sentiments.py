@@ -185,9 +185,9 @@ if st.button("Submit Predictions"):
                 'Date': datetime.today().strftime('%Y-%m-%d'),
                 'Time': datetime.now().strftime('%H:%M:%S'),
                 'Hour': None,  # Hour will be extracted from Time
-                'Processed_Feedback': None,  # This will be updated after processing
-                'Char_Count': None,  # This will be updated after processing
-                'Word_Count': None,  # This will be updated after processing
+                'Processed_Feedback': None, 
+                'Char_Count': None,
+                'Word_Count': None,
             }
 
             # Extract Hour from Time
@@ -220,7 +220,7 @@ if st.button("Submit Predictions"):
                 st.error(f"Error saving data: {str(e)}")
                 
              # Update Sentiments values in real-time
-            df1['Sentiments'] = df1['Sentiments'].replace({0: 'negative', 1: 'positive'})
+            # df1['Sentiments'] = df1['Sentiments'].replace({0: 'negative', 1: 'positive'})
     
 st.markdown(
     f"""
