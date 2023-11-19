@@ -12,7 +12,8 @@ pandas==1.5.3
 seaborn==0.12.1
 semver==2.13.0
 protobuf>=3.19.4,<4
-streamlit==1.4.0
+streamlit==0.89.0
+click==7.1.2
 tensorflow>=2.0.0,<3
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
@@ -29,4 +30,3 @@ jax
 jaxlib
 gspread
 oauth2client.service_account
-click==7.1.2
