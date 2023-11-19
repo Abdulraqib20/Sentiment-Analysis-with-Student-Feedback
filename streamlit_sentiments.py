@@ -33,7 +33,7 @@ st.set_page_config(
 )
 
 # Load the exported data using st.cache
-@st.cache_data()
+@st.cache(allow_output_mutation=True)
 def load_data():
     return pd.read_csv('exported_sentiments.csv')
 
