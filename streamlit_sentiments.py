@@ -33,7 +33,7 @@ st.set_page_config(
 )
 
 # Load the exported data using st.cache
-@st.cache(allow_output_mutation=True)
+@st.cache_data()
 def load_data():
     return pd.read_csv('exported_sentiments.csv')
 
@@ -188,6 +188,7 @@ if st.button("Submit Predictions"):
                 'Processed_Feedback': None, 
                 'Char_Count': None,
                 'Word_Count': None,
+                 'Sentiments': 1 if sentiment_label == "positive" else 0
             }
 
             # Extract Hour from Time
@@ -206,7 +207,7 @@ if st.button("Submit Predictions"):
                 df1.to_csv('exported_sentiments.csv', index=False)
                 st.success("Data saved successfully.")
 
-                # Save to CSV in Google Drive
+                Save to CSV in Google Drive
                 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
                 credentials = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
                 gc = gspread.authorize(credentials)
@@ -363,11 +364,10 @@ st.title("Sentiment Summary")
 
  # Update summary statistics in real-time
 average_sentiment = df1["Sentiment_Scores"].mean()
-positive_feedback_count = (df1["Sentiments"] == "positive").sum()
-negative_feedback_count = (df1["Sentiments"] == "negative").sum()
+positive_feedback_count = (df1["Sentiments"] == 1).sum()
+negative_feedback_count = (df1["Sentiments"] == 0).sum()
 
 # Display updated summary statistics
-# st.write(f"Average Sentiment Score: {average_sentiment:.2f}")
 st.write(f"Number of Positive Feedback: {positive_feedback_count}")
 st.write(f"Number of Negative Feedback: {negative_feedback_count}")
 
