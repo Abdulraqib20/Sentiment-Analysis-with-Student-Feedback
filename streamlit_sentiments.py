@@ -2,9 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from datetime import datetime
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# sns.set_theme(style='white')
 import plotly.express as px
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import re
@@ -43,10 +40,10 @@ def load_data():
 df1 = load_data()
 
 # Encode the target labels
-df1['Sentiments'] = df1['Sentiments'].replace({
-    'negative': 0,
-    'positive': 1
-})
+# df1['Sentiments'] = df1['Sentiments'].replace({
+#     'negative': 0,
+#     'positive': 1
+# })
 
 X = df1['Feedback']
 y = df1['Sentiments']
