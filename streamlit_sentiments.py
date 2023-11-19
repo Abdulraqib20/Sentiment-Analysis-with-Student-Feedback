@@ -120,19 +120,44 @@ To utilize the application, simply input your text, and it will promptly reveal 
 The app also has Exploratory Data Analysis capabilities.
 """)
 
+# Create containers for sideboxes
+course_code_container = st.empty()
+previous_exp_container = st.empty()
+gender_container = st.empty()
+attendance_container = st.empty()
+difficulty_container = st.empty()
+study_hours_container = st.empty()
+satisfaction_container = st.empty()
+department_container = st.empty()
+
+# Initialize variables to store sidebox values
+course_code = None
+previous_exp = None
+gender = None
+attendance = None
+difficulty = None
+study_hours = None
+satisfaction = None
+department = None
+
+# Get values from sideboxes
+course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
+previous_exp = previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
+gender = gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
+attendance = attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
+difficulty = difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
+study_hours = study_hours_container.slider("Study Hours (per week)", 0, 24)
+satisfaction = satisfaction_container.slider("Overall Satisfaction", 1, 10)
+department = department_container.selectbox("Department", ['Select Option', "Yes", "No"])
+
 # Add text input
 text = st.text_input("Enter your text:")
 
 if st.button("Submit Predictions"):
     # Check if all required fields are filled
-    if not text or st.selectbox("Course Code", ['CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301']) is None or \
-            st.selectbox("Previous Experience", ["Yes", "No"]) is None or \
-            st.selectbox("Gender", ['Male', 'Female']) is None or \
-            st.selectbox("Attendance", ['Regular', 'Irregular', 'Occasional']) is None or \
-            st.selectbox("Course Difficulty", ['Easy', 'Difficult', 'Challenging', 'Moderate']) is None or \
-            st.slider("Study Hours (per week)", 0, 24) is None or \
-            st.slider("Overall Satisfaction", 1, 10) is None or \
-            st.selectbox("Department", ["Yes", "No"]) is None:
+    if not text or course_code == 'Select Course Code' or previous_exp == 'Select Option' or gender == 'Select Gender' or \
+            attendance == 'Select Attendance' or difficulty == 'Select Difficulty' or study_hours is None or \
+            satisfaction is None or department == 'Select Option':
         st.warning("Please fill in all the required fields before submitting predictions.")
     else:
         # Predict the sentiment with a spinner
@@ -151,15 +176,15 @@ if st.button("Submit Predictions"):
 
             # Append the new row to the DataFrame with numerical label
             new_row = {
-                'Course Code': st.selectbox("Course Code", ['CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301']),
+                'Course Code': course_code,
                 'Feedback': text,
-                'Previous Experience': st.selectbox("Previous Experience", ["Yes", "No"]),
-                'Gender': st.selectbox("Gender", ['Male', 'Female']),
-                'Attendance': st.selectbox("Attendance", ['Regular', 'Irregular', 'Occasional']),
-                'Course Difficulty': st.selectbox("Course Difficulty", ['Easy', 'Difficult', 'Challenging', 'Moderate']),
-                'Study Hours (per week)': st.slider("Study Hours (per week)", 0, 24),
-                'Overall Satisfaction': st.slider("Overall Satisfaction", 1, 10),
-                'Department': st.selectbox("Department", ["Yes", "No"]),
+                'Previous Experience': previous_exp,
+                'Gender': gender,
+                'Attendance': attendance,
+                'Course Difficulty': difficulty,
+                'Study Hours (per week)': study_hours,
+                'Overall Satisfaction': satisfaction,
+                'Department': department,
                 'Date': datetime.today().strftime('%Y-%m-%d'),
                 'Time': datetime.now().strftime('%H:%M:%S'),
                 'Hour': None,  # Hour will be extracted from Time
@@ -179,7 +204,7 @@ if st.button("Submit Predictions"):
 
             df1 = pd.concat([df1, pd.DataFrame([new_row])], ignore_index=True)
 
-            # Save the updated dataset to the CSV file on Google Drive
+            # Save the updated dataset to the CSV file
             try:
                 df1.to_csv('exported_sentiments.csv', index=False)
                 st.success("Data saved successfully.")
