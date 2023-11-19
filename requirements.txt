@@ -29,4 +29,5 @@ Pillow==9.3.0
 jax
 jaxlib
 gspread
-oauth2client.service_account
+oauth2client==4.1.3
+
