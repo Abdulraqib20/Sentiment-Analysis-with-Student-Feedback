@@ -12,7 +12,7 @@ pandas==1.5.3
 seaborn==0.12.1
 semver==2.13.0
 protobuf>=3.19.4,<4
-streamlit>=0.70.0,<1
+streamlit==1.4.0
 tensorflow>=2.0.0,<3
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
