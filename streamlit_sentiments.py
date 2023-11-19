@@ -207,7 +207,7 @@ if st.button("Submit Predictions"):
                 df1.to_csv('exported_sentiments.csv', index=False)
                 st.success("Data saved successfully.")
 
-                Save to CSV in Google Drive
+                # Save to CSV in Google Drive
                 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
                 credentials = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
                 gc = gspread.authorize(credentials)
