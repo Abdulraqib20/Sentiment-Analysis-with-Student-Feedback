@@ -13,7 +13,7 @@ seaborn==0.12.1
 semver==2.13.0
 protobuf>=3.19.4,<4
 streamlit==0.89.0
-click==7.1.2
+click<8.0,>=7.0
 tensorflow>=2.0.0,<3
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
